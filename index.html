@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CitationHub — Créé par Amath 🇸🇳</title>
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #06140c;
+  --bg2: #0b2115;
+  --card: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.14);
+  --text: #fff;
+  --muted: #aab8af;
+  --green: #00853f;
+  --green2: #00a651;
+  --yellow: #fdef42;
+  --red: #e31b23;
+}
+
+body.light {
+  --bg: #f3f7f4;
+  --bg2: #fff;
+  --card: rgba(255,255,255,.9);
+  --border: rgba(0,0,0,.08);
+  --text: #111;
+  --muted: #65736b;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(0,133,63,.28),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 100%,
+      rgba(253,239,66,.10),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      var(--bg),
+      var(--bg2)
+    );
+
+  transition: .3s;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 6%;
+
+  border-bottom: 1px solid var(--border);
+
+  background: rgba(0,0,0,.12);
+
+  backdrop-filter: blur(15px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+/* ================= DRAPEAU SENEGAL ================= */
+
+.flag {
+  width: 72px;
+  height: 48px;
+
+  display: flex;
+
+  overflow: hidden;
+
+  border-radius: 5px;
+
+  box-shadow:
+    0 5px 18px rgba(0,0,0,.3);
+}
+
+.flag-green {
+  width: 33.33%;
+  background: #00853f;
+}
+
+.flag-yellow {
+  width: 33.33%;
+
+  background: #fdef42;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.flag-red {
+  width: 33.33%;
+  background: #e31b23;
+}
+
+.star {
+  width: 22px;
+  height: 22px;
+
+  background: #00853f;
+
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 94%,
+    50% 72%,
+    21% 94%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+
+.site-name {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.site-name span {
+  color: var(--green2);
+}
+
+.created {
+  color: var(--muted);
+  font-size: .85rem;
+  margin-top: 4px;
+}
+
+.created strong {
+  color: var(--yellow);
+}
+
+
+/* ================= THEME ================= */
+
+.theme {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+
+  border: 1px solid var(--border);
+
+  background: var(--card);
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+
+/* ================= MAIN ================= */
+
+main {
+  width: min(1050px, 92%);
+
+  margin: 65px auto 80px;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+
+  padding: 9px 16px;
+
+  border-radius: 50px;
+
+  background: rgba(0,133,63,.12);
+
+  border: 1px solid rgba(0,133,63,.35);
+
+  color: var(--green2);
+
+  font-weight: 800;
+
+  font-size: .82rem;
+
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size: clamp(2.5rem,7vw,5rem);
+
+  line-height: 1;
+
+  letter-spacing: -3px;
+
+  margin-bottom: 22px;
+}
+
+.green {
+  color: var(--green2);
+}
+
+.hero p {
+  max-width: 670px;
+
+  margin: auto;
+
+  color: var(--muted);
+
+  line-height: 1.7;
+}
+
+
+/* ================= SEARCH ================= */
+
+.search {
+  max-width: 780px;
+
+  margin: 38px auto 20px;
+
+  display: flex;
+
+  gap: 10px;
+
+  padding: 8px;
+
+  border: 1px solid var(--border);
+
+  background: var(--card);
+
+  border-radius: 18px;
+}
+
+.search input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 15px;
+
+  border: none;
+
+  outline: none;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,.07);
+
+  color: var(--text);
+
+  font-size: 1rem;
+}
+
+.search button {
+  padding: 0 24px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: var(--green);
+
+  color: white;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.search button:hover {
+  background: var(--green2);
+}
+
+
+/* ================= CATEGORIES ================= */
+
+.categories {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin: 20px auto 40px;
+}
+
+.category {
+  padding: 9px 15px;
+
+  border: 1px solid var(--border);
+
+  background: var(--card);
+
+  color: var(--text);
+
+  border-radius: 50px;
+
+  cursor: pointer;
+}
+
+
+/* ================= STATUS ================= */
+
+.status {
+  text-align: center;
+
+  color: var(--muted);
+
+  min-height: 25px;
+
+  margin-bottom: 12px;
+}
+
+
+/* ================= QUOTE ================= */
+
+.quote {
+  max-width: 850px;
+
+  margin: auto;
+
+  padding: clamp(35px,7vw,70px);
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 30px;
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.2);
+
+  text-align: center;
+}
+
+.quote-text {
+  font-family: Georgia, serif;
+
+  font-size: clamp(1.5rem,4vw,2.5rem);
+
+  line-height: 1.5;
+
+  margin-bottom: 25px;
+}
+
+.author {
+  color: var(--green2);
+
+  font-weight: 900;
+}
+
+
+/* ================= ACTIONS ================= */
+
+.actions {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 32px;
+}
+
+.action {
+  padding: 11px 17px;
+
+  border-radius: 11px;
+
+  border: 1px solid var(--border);
+
+  background: rgba(255,255,255,.06);
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  font-weight: 700;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+  text-align: center;
+
+  padding: 40px 20px;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--muted);
+}
+
+footer strong {
+  color: var(--green2);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:650px) {
+
+  header {
+    padding: 16px 5%;
+  }
+
+  .flag {
+    width: 60px;
+    height: 40px;
+  }
+
+  .site-name {
+    font-size: 1.05rem;
+  }
+
+  .created {
+    font-size: .75rem;
+  }
+
+  .search {
+    flex-direction: column;
+  }
+
+  .search button {
+    height: 48px;
+  }
+
+  h1 {
+    letter-spacing: -1px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+  <div class="brand">
+
+    <div class="flag">
+
+      <div class="flag-green"></div>
+
+      <div class="flag-yellow">
+        <div class="star"></div>
+      </div>
+
+      <div class="flag-red"></div>
+
+    </div>
+
+    <div>
+
+      <div class="site-name">
+        Citation<span>Hub</span>
+      </div>
+
+      <div class="created">
+        Créé par <strong>Amath</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="theme"
+    id="theme"
+  >
+    ☀️
+  </button>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+<section class="hero">
+
+  <div class="badge">
+    🇸🇳 Fièrement créé au Sénégal
+  </div>
+
+  <h1>
+    Trouve une citation<br>
+    qui <span class="green">t'inspire.</span>
+  </h1>
+
+  <p>
+    Recherche une citation par mot-clé ou par auteur.
+    Tu peux rechercher la motivation, l'amour,
+    le succès, la vie, la sagesse et bien plus.
+  </p>
+
+
+  <!-- SEARCH -->
+
+  <div class="search">
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Ex : motivation, amour, succès..."
+    >
+
+    <button id="searchButton">
+      🔎 Rechercher
+    </button>
+
+  </div>
+
+
+  <!-- CATEGORIES -->
+
+  <div class="categories">
+
+    <button
+      class="category"
+      data-search="motivation"
+    >
+      🔥 Motivation
+    </button>
+
+    <button
+      class="category"
+      data-search="love"
+    >
+      ❤️ Amour
+    </button>
+
+    <button
+      class="category"
+      data-search="success"
+    >
+      🏆 Succès
+    </button>
+
+    <button
+      class="category"
+      data-search="life"
+    >
+      🌱 Vie
+    </button>
+
+    <button
+      class="category"
+      data-search="happiness"
+    >
+      😊 Bonheur
+    </button>
+
+    <button
+      class="category"
+      data-search="wisdom"
+    >
+      🧠 Sagesse
+    </button>
+
+    <button
+      class="category"
+      data-search="courage"
+    >
+      💪 Courage
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- STATUS -->
+
+<div
+  class="status"
+  id="status"
+></div>
+
+
+<!-- CITATION -->
+
+<section class="quote">
+
+  <div
+    class="quote-text"
+    id="quoteText"
+  >
+    Chargement...
+  </div>
+
+  <div
+    class="author"
+    id="quoteAuthor"
+  >
+    — CitationHub
+  </div>
+
+
+  <div class="actions">
+
+    <button
+      class="action"
+      id="newQuote"
+    >
+      ✨ Nouvelle citation
+    </button>
+
+    <button
+      class="action"
+      id="copy"
+    >
+      📋 Copier
+    </button>
+
+    <button
+      class="action"
+      id="share"
+    >
+      ↗ Partager
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  🇸🇳 CitationHub
+
+  <br><br>
+
+  Créé avec ❤️ par
+  <strong>Amath</strong>
+
+  <br><br>
+
+  Des mots qui inspirent.
+
+</footer>
+
+
+<script>
+
+/*
+==========================================================
+ CITATIONHUB
+ SYSTÈME DE RÉCUPÉRATION AVEC SECOURS
+==========================================================
+
+Le site essaie plusieurs sources.
+
+1. API Quotable
+2. API ZenQuotes
+3. Base locale de secours
+
+Ainsi, si une API ne répond pas,
+le site continue à fonctionner.
+*/
+
+
+/* ========================================================
+   ELEMENTS
+======================================================== */
+
+const quoteText =
+  document.getElementById("quoteText");
+
+const quoteAuthor =
+  document.getElementById("quoteAuthor");
+
+const status =
+  document.getElementById("status");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const searchButton =
+  document.getElementById("searchButton");
+
+const newQuote =
+  document.getElementById("newQuote");
+
+const copyButton =
+  document.getElementById("copy");
+
+const shareButton =
+  document.getElementById("share");
+
+const themeButton =
+  document.getElementById("theme");
+
+
+/* ========================================================
+   BASE DE SECOURS
+======================================================== */
+
+/*
+   Ces citations permettent au site de fonctionner
+   même lorsque les APIs sont temporairement
+   indisponibles.
+*/
+
+const localQuotes = [
+
+  {
+    q: "Le succès est la somme de petits efforts répétés jour après jour.",
+    a: "Citation"
+  },
+
+  {
+    q: "La vie est un voyage, pas une destination.",
+    a: "Ralph Waldo Emerson"
+  },
+
+  {
+    q: "Le courage commence lorsque l'on décide d'avancer malgré la peur.",
+    a: "Citation"
+  },
+
+  {
+    q: "Chaque jour est une nouvelle occasion de devenir meilleur.",
+    a: "Citation"
+  },
+
+  {
+    q: "La patience transforme les difficultés en expérience.",
+    a: "Citation"
+  },
+
+  {
+    q: "Crois en tes possibilités et avance étape par étape.",
+    a: "Citation"
+  },
+
+  {
+    q: "Le bonheur se trouve souvent dans les choses simples.",
+    a: "Citation"
+  },
+
+  {
+    q: "N'abandonne pas simplement parce que le chemin est difficile.",
+    a: "Citation"
+  },
+
+  {
+    q: "La connaissance grandit lorsque nous la partageons.",
+    a: "Citation"
+  },
+
+  {
+    q: "Un petit progrès chaque jour peut conduire à un grand changement.",
+    a: "Citation"
+  }
+
+];
+
+
+/* ========================================================
+   AFFICHER
+======================================================== */
+
+function displayQuote(quote) {
+
+  quoteText.textContent =
+    `“${quote.q}”`;
+
+  quoteAuthor.textContent =
+    `— ${quote.a}`;
+
+}
+
+
+/* ========================================================
+   CITATION LOCALE
+======================================================== */
+
+function getLocalQuote() {
+
+  const index =
+    Math.floor(
+      Math.random() *
+      localQuotes.length
+    );
+
+  return localQuotes[index];
+
+}
+
+
+/* ========================================================
+   API 1 : QUOTABLE
+======================================================== */
+
+async function getFromQuotable() {
+
+  const controller =
+    new AbortController();
+
+  const timeout =
+    setTimeout(
+      () => controller.abort(),
+      5000
+    );
+
+
+  try {
+
+    const response =
+      await fetch(
+        "https://api.quotable.io/random",
+        {
+          signal: controller.signal
+        }
+      );
+
+
+    if (!response.ok) {
+      throw new Error("Quotable indisponible");
+    }
+
+
+    const data =
+      await response.json();
+
+
+    return {
+
+      q: data.content,
+
+      a: data.author
+
+    };
+
+  }
+
+  finally {
+
+    clearTimeout(timeout);
+
+  }
+
+}
+
+
+/* ========================================================
+   API 2 : ZENQUOTES
+======================================================== */
+
+async function getFromZenQuotes() {
+
+  const controller =
+    new AbortController();
+
+  const timeout =
+    setTimeout(
+      () => controller.abort(),
+      5000
+    );
+
+
+  try {
+
+    const response =
+      await fetch(
+        "https://zenquotes.io/api/random",
+        {
+          signal: controller.signal
+        }
+      );
+
+
+    if (!response.ok) {
+      throw new Error("ZenQuotes indisponible");
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !Array.isArray(data) ||
+      !data[0]
+    ) {
+
+      throw new Error(
+        "Réponse incorrecte"
+      );
+
+    }
+
+
+    return {
+
+      q: data[0].q,
+
+      a: data[0].a
+
+    };
+
+  }
+
+  finally {
+
+    clearTimeout(timeout);
+
+  }
+
+}
+
+
+/* ========================================================
+   NOUVELLE CITATION
+======================================================== */
+
+async function getQuote() {
+
+  status.textContent =
+    "Recherche d'une citation...";
+
+
+  newQuote.disabled = true;
+
+
+  /*
+    API 1
+  */
+
+  try {
+
+    const quote =
+      await getFromQuotable();
+
+    displayQuote(quote);
+
+    status.textContent = "";
+
+    newQuote.disabled = false;
+
+    return;
+
+  }
+
+  catch(error) {
+
+    console.log(
+      "Quotable indisponible."
+    );
+
+  }
+
+
+  /*
+    API 2
+  */
+
+  try {
+
+    const quote =
+      await getFromZenQuotes();
+
+    displayQuote(quote);
+
+    status.textContent = "";
+
+    newQuote.disabled = false;
+
+    return;
+
+  }
+
+  catch(error) {
+
+    console.log(
+      "ZenQuotes indisponible."
+    );
+
+  }
+
+
+  /*
+    SECOURS LOCAL
+  */
+
+  const quote =
+    getLocalQuote();
+
+  displayQuote(quote);
+
+
+  status.textContent =
+    "Mode hors connexion : citation locale";
+
+
+  newQuote.disabled = false;
+
+}
+
+
+/* ========================================================
+   RECHERCHE
+======================================================== */
+
+async function searchQuotes() {
+
+  const query =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  /*
+    Pas de recherche
+  */
+
+  if (!query) {
+
+    getQuote();
+
+    return;
+
+  }
+
+
+  status.textContent =
+    "Recherche en cours...";
+
+
+  /*
+    On essaie d'abord de chercher
+    dans la base locale.
+
+    Cela garantit que la recherche
+    répond toujours.
+  */
+
+  const localResults =
+    localQuotes.filter(
+      quote => {
+
+        const text =
+          quote.q.toLowerCase();
+
+        const author =
+          quote.a.toLowerCase();
+
+        return (
+          text.includes(query) ||
+          author.includes(query)
+        );
+
+      }
+    );
+
+
+  if (localResults.length > 0) {
+
+    const index =
+      Math.floor(
+        Math.random() *
+        localResults.length
+      );
+
+
+    displayQuote(
+      localResults[index]
+    );
+
+
+    status.textContent =
+      "Citation trouvée.";
+
+
+    return;
+
+  }
+
+
+  /*
+    Si la recherche locale ne donne rien,
+    on essaie Quotable.
+  */
+
+  try {
+
+    const response =
+      await fetch(
+        "https://api.quotable.io/quotes?query=" +
+        encodeURIComponent(query)
+      );
+
+
+    if (response.ok) {
+
+      const data =
+        await response.json();
+
+
+      if (
+        data.results &&
+        data.results.length > 0
+      ) {
+
+        const index =
+          Math.floor(
+            Math.random() *
+            data.results.length
+          );
+
+
+        displayQuote({
+
+          q:
+            data.results[index].content,
+
+          a:
+            data.results[index].author
+
+        });
+
+
+        status.textContent =
+          `${data.totalCount || data.results.length} résultat(s).`;
+
+        return;
+
+      }
+
+    }
+
+  }
+
+  catch(error) {
+
+    console.log(
+      "Recherche API indisponible."
+    );
+
+  }
+
+
+  /*
+    Aucun résultat
+  */
+
+  quoteText.textContent =
+    "Aucune citation trouvée pour cette recherche.";
+
+  quoteAuthor.textContent =
+    "— Essaie un autre mot-clé";
+
+  status.textContent =
+    "Exemples : motivation, amour, succès, vie, courage.";
+
+
+}
+
+
+/* ========================================================
+   CATEGORIES
+======================================================== */
+
+document
+  .querySelectorAll(".category")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        searchInput.value =
+          button.dataset.search;
+
+        searchQuotes();
+
+      }
+    );
+
+  });
+
+
+/* ========================================================
+   RECHERCHE
+======================================================== */
+
+searchButton.addEventListener(
+  "click",
+  searchQuotes
+);
+
+
+/* ========================================================
+   ENTER
+======================================================== */
+
+searchInput.addEventListener(
+  "keydown",
+  event => {
+
+    if (event.key === "Enter") {
+
+      searchQuotes();
+
+    }
+
+  }
+);
+
+
+/* ========================================================
+   NOUVELLE CITATION
+======================================================== */
+
+newQuote.addEventListener(
+  "click",
+  getQuote
+);
+
+
+/* ========================================================
+   COPIER
+======================================================== */
+
+copyButton.addEventListener(
+  "click",
+  async () => {
+
+    const text =
+      `${quoteText.textContent}\n${quoteAuthor.textContent}`;
+
+
+    try {
+
+      await navigator.clipboard.writeText(
+        text
+      );
+
+
+      copyButton.textContent =
+        "✅ Copié !";
+
+
+      setTimeout(
+        () => {
+
+          copyButton.textContent =
+            "📋 Copier";
+
+        },
+        1500
+      );
+
+    }
+
+    catch(error) {
+
+      alert(
+        "Impossible de copier la citation."
+      );
+
+    }
+
+  }
+);
+
+
+/* ========================================================
+   PARTAGER
+======================================================== */
+
+shareButton.addEventListener(
+  "click",
+  async () => {
+
+    const text =
+      `${quoteText.textContent}\n${quoteAuthor.textContent}`;
+
+
+    if (
+      navigator.share
+    ) {
+
+      try {
+
+        await navigator.share({
+
+          title:
+            "CitationHub",
+
+          text:
+            text
+
+        });
+
+      }
+
+      catch(error) {
+
+        // Partage annulé.
+
+      }
+
+    }
+
+    else {
+
+      try {
+
+        await navigator.clipboard.writeText(
+          text
+        );
+
+        alert(
+          "Citation copiée !"
+        );
+
+      }
+
+      catch(error) {
+
+        alert(
+          "Impossible de partager."
+        );
+
+      }
+
+    }
+
+  }
+);
+
+
+/* ========================================================
+   MODE CLAIR / SOMBRE
+======================================================== */
+
+themeButton.addEventListener(
+  "click",
+  () => {
+
+    document.body.classList.toggle(
+      "light"
+    );
+
+
+    if (
+      document.body.classList.contains(
+        "light"
+      )
+    ) {
+
+      themeButton.textContent =
+        "🌙";
+
+    }
+
+    else {
+
+      themeButton.textContent =
+        "☀️";
+
+    }
+
+  }
+);
+
+
+/* ========================================================
+   LANCEMENT
+======================================================== */
+
+getQuote();
+
+</script>
+
+</body>
+</html>
