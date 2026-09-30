@@ -3,61 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CitationHub — Citations inspirantes en français, anglais et wolof. Créé par Amath au Sénégal.">
+
   <title>CitationHub — Créé par Amath 🇸🇳</title>
+
+  <meta
+    name="description"
+    content="CitationHub : citations en français, anglais et wolof, recherche multilingue et lecture vocale."
+  >
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     :root {
-      --bg: #f5f7fb;
+      --bg: #f4f7f6;
       --card: #ffffff;
       --text: #17202a;
-      --muted: #6b7280;
-      --primary: #00853f;
-      --secondary: #fdef42;
-      --danger: #e31b23;
-      --border: #e5e7eb;
-      --shadow: 0 15px 40px rgba(0,0,0,.08);
+      --muted: #68727d;
+      --green: #00853f;
+      --green-dark: #006b32;
+      --yellow: #fdef42;
+      --red: #e31b23;
+      --border: #e2e7e4;
+      --shadow: 0 18px 50px rgba(0,0,0,.09);
     }
 
     body.dark {
-      --bg: #101418;
-      --card: #182027;
-      --text: #f4f4f5;
-      --muted: #a1a1aa;
-      --border: #29323a;
-      --shadow: 0 15px 40px rgba(0,0,0,.25);
+      --bg: #0d1310;
+      --card: #151d19;
+      --text: #f2f5f3;
+      --muted: #9da9a3;
+      --border: #2a352f;
+      --shadow: 0 18px 50px rgba(0,0,0,.3);
     }
 
     body {
+      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
       transition: .3s;
     }
 
+    /* =========================
+       HEADER
+    ========================= */
+
     header {
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
     .navbar {
       max-width: 1150px;
       margin: auto;
-      padding: 15px 20px;
+      padding: 14px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      align-items: center;
+      gap: 15px;
     }
 
     .brand {
@@ -71,21 +82,24 @@
     }
 
     .creator {
-      color: var(--primary);
+      color: var(--green);
       font-size: 12px;
       font-weight: bold;
       margin-top: 3px;
     }
 
-    /* Drapeau du Sénégal en CSS */
+    /* =========================
+       DRAPEAU SENEGAL CSS
+    ========================= */
+
     .flag {
       width: 48px;
-      height: 32px;
+      height: 31px;
       display: flex;
       position: relative;
-      border-radius: 5px;
       overflow: hidden;
-      box-shadow: 0 3px 8px rgba(0,0,0,.15);
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
       flex-shrink: 0;
     }
 
@@ -94,73 +108,80 @@
       height: 100%;
     }
 
-    .green {
+    .flag-green {
       background: #00853f;
     }
 
-    .yellow {
+    .flag-yellow {
       background: #fdef42;
     }
 
-    .red {
+    .flag-red {
       background: #e31b23;
     }
 
-    .flag .star {
+    .flag-star {
       position: absolute;
       width: 14px;
       height: 14px;
       left: 17px;
-      top: 9px;
+      top: 8px;
       background: #00853f;
       clip-path: polygon(
-        50% 0%, 61% 35%, 98% 35%,
-        68% 57%, 79% 95%,
-        50% 72%, 21% 95%,
-        32% 57%, 2% 35%, 39% 35%
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 95%,
+        50% 72%,
+        21% 95%,
+        32% 57%,
+        2% 35%,
+        39% 35%
       );
     }
 
-    .actions {
+    .header-actions {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    button, select, input {
-      font-family: inherit;
-    }
-
-    .icon-btn {
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 18px;
-      transition: .2s;
-    }
-
-    .icon-btn:hover {
-      transform: translateY(-2px);
+    select,
+    button,
+    input {
+      font: inherit;
     }
 
     .language {
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--text);
-      padding: 11px 12px;
-      border-radius: 12px;
+      padding: 10px 12px;
+      border-radius: 11px;
       outline: none;
       cursor: pointer;
     }
 
+    .theme-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
     main {
-      max-width: 1000px;
+      width: min(1000px, 92%);
       margin: auto;
-      padding: 55px 20px;
+      padding: 55px 0;
     }
 
     .hero {
@@ -169,126 +190,167 @@
     }
 
     .hero h2 {
-      font-size: clamp(32px, 6vw, 58px);
-      margin-bottom: 12px;
+      font-size: clamp(34px, 7vw, 60px);
       line-height: 1.05;
+      margin-bottom: 15px;
     }
 
     .hero h2 span {
-      color: var(--primary);
+      color: var(--green);
     }
 
     .hero p {
-      max-width: 650px;
+      max-width: 700px;
       margin: auto;
       color: var(--muted);
       line-height: 1.7;
-      font-size: 16px;
     }
 
-    .search-box {
+    /* =========================
+       RECHERCHE
+    ========================= */
+
+    .search-container {
       display: flex;
       gap: 10px;
+      padding: 9px;
       background: var(--card);
-      padding: 10px;
+      border: 1px solid var(--border);
       border-radius: 18px;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .search-box input {
+    .search-container input {
       flex: 1;
-      border: 0;
-      outline: 0;
+      min-width: 0;
+      border: none;
+      outline: none;
       background: transparent;
       color: var(--text);
-      padding: 13px;
+      padding: 14px;
       font-size: 16px;
-      min-width: 0;
     }
 
-    .search-btn {
-      border: 0;
-      background: var(--primary);
+    .search-button {
+      border: none;
+      border-radius: 12px;
+      background: var(--green);
       color: white;
       padding: 0 22px;
-      border-radius: 12px;
       cursor: pointer;
       font-weight: bold;
     }
 
-    .categories {
+    .search-button:hover {
+      background: var(--green-dark);
+    }
+
+    /* =========================
+       LANGUES
+    ========================= */
+
+    .language-buttons {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
-      margin-bottom: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .language-button {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 50px;
+      padding: 9px 15px;
+      cursor: pointer;
+    }
+
+    .language-button.active {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    /* =========================
+       CATEGORIES
+    ========================= */
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 35px;
     }
 
     .category {
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--text);
-      border-radius: 999px;
       padding: 9px 14px;
+      border-radius: 50px;
       cursor: pointer;
-      transition: .2s;
     }
 
     .category:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+      border-color: var(--green);
+      color: var(--green);
     }
 
+    /* =========================
+       CITATION
+    ========================= */
+
     .quote-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: 25px;
-      padding: clamp(25px, 5vw, 50px);
-      text-align: center;
       position: relative;
       overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: clamp(28px, 6vw, 55px);
+      text-align: center;
+      box-shadow: var(--shadow);
     }
 
     .quote-card::before {
       content: "“";
       position: absolute;
-      top: -35px;
-      left: 20px;
-      font-size: 180px;
-      color: var(--primary);
-      opacity: .08;
+      left: 15px;
+      top: -40px;
       font-family: Georgia, serif;
+      font-size: 190px;
+      color: var(--green);
+      opacity: .07;
     }
 
     .quote {
       position: relative;
       font-family: Georgia, serif;
       font-size: clamp(23px, 4vw, 38px);
-      line-height: 1.45;
-      margin-bottom: 20px;
+      line-height: 1.5;
+      margin-bottom: 18px;
     }
 
     .author {
-      color: var(--primary);
+      color: var(--green);
       font-weight: bold;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .status {
       min-height: 22px;
       color: var(--muted);
       font-size: 14px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
-    .quote-actions {
+    .quote-buttons {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 9px;
     }
 
     .btn {
@@ -306,57 +368,82 @@
       transform: translateY(-2px);
     }
 
-    .btn.primary {
-      background: var(--primary);
-      border-color: var(--primary);
+    .btn-green {
+      background: var(--green);
       color: white;
+      border-color: var(--green);
     }
 
-    .btn.voice {
-      background: #fdef42;
+    .btn-yellow {
+      background: var(--yellow);
       color: #111;
-      border-color: #fdef42;
+      border-color: var(--yellow);
     }
 
-    .info {
-      margin-top: 30px;
+    .btn-red {
+      background: var(--red);
+      color: white;
+      border-color: var(--red);
+    }
+
+    /* =========================
+       VOIX
+    ========================= */
+
+    .voice-info {
+      margin-top: 25px;
       padding: 18px;
       border-radius: 16px;
       background: rgba(0,133,63,.07);
       color: var(--muted);
+      text-align: center;
       line-height: 1.6;
       font-size: 14px;
-      text-align: center;
     }
 
+    .voice-warning {
+      display: none;
+      margin-top: 12px;
+      color: #a15c00;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: var(--muted);
       border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
     }
 
     footer strong {
-      color: var(--primary);
-    }
-
-    .loading {
-      animation: pulse 1s infinite;
-    }
-
-    @keyframes pulse {
-      50% {
-        opacity: .45;
-      }
+      color: var(--green);
     }
 
     @media (max-width: 650px) {
+
       .navbar {
         padding: 12px;
       }
 
+      .brand h1 {
+        font-size: 18px;
+      }
+
       .creator {
         display: none;
+      }
+
+      .flag {
+        width: 42px;
+        height: 28px;
+      }
+
+      .flag-star {
+        left: 15px;
+        top: 7px;
       }
 
       .language {
@@ -364,23 +451,23 @@
       }
 
       main {
-        padding: 35px 14px;
+        padding: 35px 0;
       }
 
-      .search-box {
+      .search-container {
         flex-direction: column;
       }
 
-      .search-btn {
+      .search-button {
         padding: 13px;
       }
 
-      .quote-card {
-        border-radius: 20px;
+      .quote-buttons {
+        flex-direction: column;
       }
 
-      .actions {
-        gap: 5px;
+      .quote-buttons .btn {
+        width: 100%;
       }
     }
   </style>
@@ -392,96 +479,156 @@
   <nav class="navbar">
 
     <div class="brand">
-      <div class="flag" title="Sénégal">
-        <span class="green"></span>
-        <span class="yellow"></span>
-        <span class="red"></span>
-        <div class="star"></div>
+
+      <div class="flag">
+        <span class="flag-green"></span>
+        <span class="flag-yellow"></span>
+        <span class="flag-red"></span>
+        <div class="flag-star"></div>
       </div>
 
       <div>
         <h1>CitationHub</h1>
         <div class="creator">Créé par Amath</div>
       </div>
+
     </div>
 
-    <div class="actions">
-      <select id="language" class="language" aria-label="Choisir la langue">
+    <div class="header-actions">
+
+      <select id="languageSelect" class="language">
         <option value="fr">🇫🇷 Français</option>
         <option value="en">🇬🇧 English</option>
         <option value="wo">🇸🇳 Wolof</option>
       </select>
 
-      <button id="themeBtn" class="icon-btn" title="Changer le thème">
+      <button id="themeButton" class="theme-button">
         🌙
       </button>
+
     </div>
 
   </nav>
 </header>
 
+
 <main>
 
   <section class="hero">
-    <h2>Des mots qui <span>inspirent.</span></h2>
+
+    <h2>
+      Des mots qui <span>inspirent.</span>
+    </h2>
+
     <p id="heroText">
-      Découvre des citations motivantes et inspirantes en français,
-      anglais et wolof. Tu peux aussi les écouter.
+      Recherche une citation en français, anglais ou wolof.
+      Le moteur comprend aussi les mots équivalents entre les langues.
     </p>
+
   </section>
 
-  <div class="search-box">
+
+  <!-- RECHERCHE -->
+
+  <div class="search-container">
+
     <input
       id="searchInput"
-      type="text"
-      placeholder="Rechercher une citation..."
+      type="search"
+      placeholder="Exemple : vie, amour, motivation..."
       autocomplete="off"
     >
-    <button id="searchBtn" class="search-btn">
+
+    <button id="searchButton" class="search-button">
       🔎 Rechercher
     </button>
+
   </div>
 
-  <div class="categories">
-    <button class="category" data-search="motivation">🔥 Motivation</button>
-    <button class="category" data-search="success">🏆 Succès</button>
-    <button class="category" data-search="love">❤️ Amour</button>
-    <button class="category" data-search="life">🌍 Vie</button>
-    <button class="category" data-search="courage">💪 Courage</button>
-    <button class="category" data-search="happiness">😊 Bonheur</button>
+
+  <!-- LANGUES -->
+
+  <div class="language-buttons">
+
+    <button class="language-button active" data-language="fr">
+      🇫🇷 Français
+    </button>
+
+    <button class="language-button" data-language="en">
+      🇬🇧 English
+    </button>
+
+    <button class="language-button" data-language="wo">
+      🇸🇳 Wolof
+    </button>
+
   </div>
+
+
+  <!-- CATEGORIES -->
+
+  <div class="categories">
+
+    <button class="category" data-search="vie">
+      🌍 Vie
+    </button>
+
+    <button class="category" data-search="amour">
+      ❤️ Amour
+    </button>
+
+    <button class="category" data-search="motivation">
+      🔥 Motivation
+    </button>
+
+    <button class="category" data-search="succès">
+      🏆 Succès
+    </button>
+
+    <button class="category" data-search="courage">
+      💪 Courage
+    </button>
+
+    <button class="category" data-search="bonheur">
+      😊 Bonheur
+    </button>
+
+  </div>
+
+
+  <!-- CITATION -->
 
   <section class="quote-card">
 
     <div id="status" class="status"></div>
 
     <div id="quote" class="quote">
-      Chargement de la citation...
+      Chargement...
     </div>
 
     <div id="author" class="author">
       —
     </div>
 
-    <div class="quote-actions">
+    <div class="quote-buttons">
 
-      <button id="voiceBtn" class="btn voice">
+      <button id="listenButton" class="btn btn-yellow">
         🔊 Écouter
       </button>
 
-      <button id="stopVoiceBtn" class="btn">
+      <button id="stopButton" class="btn btn-red">
         ⏹️ Arrêter
       </button>
 
-      <button id="copyBtn" class="btn">
+      <button id="copyButton" class="btn">
         📋 Copier
       </button>
 
-      <button id="shareBtn" class="btn">
+      <button id="shareButton" class="btn">
         📤 Partager
       </button>
 
-      <button id="newQuoteBtn" class="btn primary">
+      <button id="newButton" class="btn btn-green">
         ✨ Nouvelle citation
       </button>
 
@@ -489,350 +636,607 @@
 
   </section>
 
-  <div class="info">
-    🔊 <strong>Lecture vocale :</strong>
-    utilise la voix disponible sur ton téléphone ou ton ordinateur.
-    La disponibilité du wolof dépend des voix installées sur l'appareil.
+
+  <div class="voice-info">
+
+    🔊 <strong>Lecture vocale</strong><br>
+
+    Français et anglais utilisent la synthèse vocale
+    disponible sur ton appareil.
+
+    <div id="wolofWarning" class="voice-warning">
+      ⚠️ Aucune voix wolof native n'est garantie par le navigateur.
+      Pour une vraie prononciation wolof, il faudra connecter
+      un service vocal qui prend officiellement le wolof en charge.
+    </div>
+
   </div>
 
 </main>
 
+
 <footer>
-  🇸🇳 <strong>CitationHub</strong> — Créé avec ❤️ par Amath
+
+  🇸🇳
+  <strong>CitationHub</strong>
+  — Créé avec ❤️ par Amath
+
 </footer>
 
 
 <script>
+
   /*
-    =====================================================
-    CITATIONHUB
-    Français / English / Wolof
-    =====================================================
+  =====================================================
+  CITATIONHUB
+  =====================================================
+
+  API :
+  DummyJSON Quotes
+
+  Documentation :
+  https://dummyjson.com/docs/quotes
+
+  L'API fournit des citations en anglais.
+
+  Pour le français et le wolof :
+  nous avons une base locale afin de garantir
+  le fonctionnement du site.
   */
 
-  const quoteElement = document.getElementById("quote");
-  const authorElement = document.getElementById("author");
-  const statusElement = document.getElementById("status");
-  const searchInput = document.getElementById("searchInput");
-  const languageSelect = document.getElementById("language");
 
-  let currentQuote = "";
-  let currentAuthor = "";
+  const API_RANDOM =
+    "https://dummyjson.com/quotes/random";
+
+
   let currentLanguage = "fr";
 
+  let currentQuote = "";
+
+  let currentAuthor = "";
+
+
+  const quoteElement =
+    document.getElementById("quote");
+
+  const authorElement =
+    document.getElementById("author");
+
+  const statusElement =
+    document.getElementById("status");
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const languageSelect =
+    document.getElementById("languageSelect");
+
+  const wolofWarning =
+    document.getElementById("wolofWarning");
+
+
   /*
-    Citations de secours.
-    Elles permettent au site de continuer à fonctionner
-    même si l'API n'est pas disponible.
+  =====================================================
+  CITATIONS LOCALES
+  =====================================================
   */
 
-  const fallbackQuotes = {
+  const localQuotes = {
 
     fr: [
+
       {
-        text: "Le succès est la somme de petits efforts répétés jour après jour.",
-        author: "Robert Collier"
+        text:
+          "La vie est un voyage, pas une destination.",
+        author:
+          "Ralph Waldo Emerson",
+        tags:
+          ["vie", "life", "motivation"]
       },
+
       {
-        text: "La vie est un voyage, pas une destination.",
-        author: "Ralph Waldo Emerson"
+        text:
+          "Chaque jour est une nouvelle occasion de devenir meilleur.",
+        author:
+          "Citation populaire",
+        tags:
+          ["vie", "life", "motivation"]
       },
+
       {
-        text: "Crois en toi et avance malgré les difficultés.",
-        author: "Citation populaire"
+        text:
+          "Le courage commence lorsque tu décides de ne pas abandonner.",
+        author:
+          "Citation populaire",
+        tags:
+          ["courage", "motivation"]
       },
+
       {
-        text: "Chaque jour est une nouvelle occasion de devenir meilleur.",
-        author: "Citation populaire"
+        text:
+          "Le succès vient avec la patience et le travail.",
+        author:
+          "Citation populaire",
+        tags:
+          ["succès", "success", "motivation"]
       },
+
       {
-        text: "Le courage commence lorsque tu décides de ne pas abandonner.",
-        author: "Citation populaire"
+        text:
+          "L'amour donne du sens aux plus beaux moments de la vie.",
+        author:
+          "Citation populaire",
+        tags:
+          ["amour", "love", "vie", "life"]
+      },
+
+      {
+        text:
+          "Le bonheur commence lorsque l'on apprécie ce que l'on possède.",
+        author:
+          "Citation populaire",
+        tags:
+          ["bonheur", "happiness"]
       }
+
     ],
+
 
     en: [
+
       {
-        text: "Success is the sum of small efforts repeated day after day.",
-        author: "Robert Collier"
+        text:
+          "Life is a journey, not a destination.",
+        author:
+          "Ralph Waldo Emerson",
+        tags:
+          ["life", "vie", "motivation"]
       },
+
       {
-        text: "Life is a journey, not a destination.",
-        author: "Ralph Waldo Emerson"
+        text:
+          "Every day is a new opportunity to become better.",
+        author:
+          "Popular quote",
+        tags:
+          ["life", "vie", "motivation"]
       },
+
       {
-        text: "Believe in yourself and keep moving forward.",
-        author: "Popular quote"
+        text:
+          "Courage begins when you decide not to give up.",
+        author:
+          "Popular quote",
+        tags:
+          ["courage", "motivation"]
       },
+
       {
-        text: "Every day is a new opportunity to become better.",
-        author: "Popular quote"
+        text:
+          "Success comes with patience and hard work.",
+        author:
+          "Popular quote",
+        tags:
+          ["success", "succès", "motivation"]
       },
+
       {
-        text: "Courage begins when you decide not to give up.",
-        author: "Popular quote"
+        text:
+          "Love gives meaning to the most beautiful moments of life.",
+        author:
+          "Popular quote",
+        tags:
+          ["love", "amour", "life", "vie"]
+      },
+
+      {
+        text:
+          "Happiness begins when you appreciate what you have.",
+        author:
+          "Popular quote",
+        tags:
+          ["happiness", "bonheur"]
       }
+
     ],
 
+
     wo: [
+
       {
-        text: "Ku gëm ci sa bopp, te doo bàyyi.",
-        author: "Citation wolof"
+        text:
+          "Ku muñ, mujj a jot.",
+        author:
+          "Proverbe wolof",
+        tags:
+          ["muñ", "patience", "courage", "motivation"]
       },
+
       {
-        text: "Jàmm ak muñ mooy yoon wi ci jàmm.",
-        author: "Citation wolof"
+        text:
+          "Jàmm ak muñ mooy yoon wu baax.",
+        author:
+          "Proverbe wolof",
+        tags:
+          ["jàmm", "paix", "patience"]
       },
+
       {
-        text: "Bés bu nekk, am na lu bees nga mën a jàng.",
-        author: "Citation wolof"
+        text:
+          "Bul bàyyi sa yaakaar.",
+        author:
+          "Citation wolof",
+        tags:
+          ["yaakaar", "espoir", "hope", "motivation"]
       },
+
       {
-        text: "Bul ragal jafe-jafe, ndax muñ mooy doole.",
-        author: "Citation wolof"
-      },
-      {
-        text: "Ku dul bàyyi, dina jot ci li mu bëgg.",
-        author: "Citation wolof"
+        text:
+          "Xam-xam mooy doole.",
+        author:
+          "Proverbe wolof",
+        tags:
+          ["xam-xam", "knowledge", "savoir"]
       }
+
     ]
 
   };
 
 
   /*
-    Traductions de l'interface
+  =====================================================
+  DICTIONNAIRE MULTILINGUE
+  =====================================================
+
+  Exemple :
+
+  vie
+  ↓
+  life
+  ↓
+  aduna
   */
 
-  const translations = {
+  const searchGroups = {
 
-    fr: {
-      hero:
-        "Découvre des citations motivantes et inspirantes en français, anglais et wolof. Tu peux aussi les écouter.",
-      placeholder:
-        "Rechercher une citation...",
-      search:
-        "🔎 Rechercher",
-      listen:
-        "🔊 Écouter",
-      stop:
-        "⏹️ Arrêter",
-      copy:
-        "📋 Copier",
-      share:
-        "📤 Partager",
-      newQuote:
-        "✨ Nouvelle citation",
-      loading:
-        "Recherche d'une citation...",
-      copied:
-        "✅ Citation copiée !",
-      noResult:
-        "Aucune citation trouvée. Essaie un autre mot.",
-      apiError:
-        "API indisponible : citation de secours utilisée."
-    },
+    vie: [
+      "vie",
+      "life",
+      "aduna"
+    ],
 
-    en: {
-      hero:
-        "Discover motivational and inspiring quotes in French, English and Wolof. You can also listen to them.",
-      placeholder:
-        "Search for a quote...",
-      search:
-        "🔎 Search",
-      listen:
-        "🔊 Listen",
-      stop:
-        "⏹️ Stop",
-      copy:
-        "📋 Copy",
-      share:
-        "📤 Share",
-      newQuote:
-        "✨ New quote",
-      loading:
-        "Searching for a quote...",
-      copied:
-        "✅ Quote copied!",
-      noResult:
-        "No quote found. Try another word.",
-      apiError:
-        "API unavailable: using a backup quote."
-    },
+    life: [
+      "vie",
+      "life",
+      "aduna"
+    ],
 
-    wo: {
-      hero:
-        "Gis ay wax yu la mën a dooleel te laaŋal ci français, anglais ak wolof. Mën nga itam déglu leen.",
-      placeholder:
-        "Seet benn citation...",
-      search:
-        "🔎 Seet",
-      listen:
-        "🔊 Déglu",
-      stop:
-        "⏹️ Taxaw",
-      copy:
-        "📋 Topp",
-      share:
-        "📤 Séddale",
-      newQuote:
-        "✨ Citation bu bees",
-      loading:
-        "Mi ngi seet citation...",
-      copied:
-        "✅ Citation bi topp na !",
-      noResult:
-        "Gisuma citation. Jéemaat ak beneen baat.",
-      apiError:
-        "API bi doxul : citation bu secours lañu jëfandikoo."
-    }
+    aduna: [
+      "vie",
+      "life",
+      "aduna"
+    ],
+
+
+    amour: [
+      "amour",
+      "love",
+      "mbëggeel"
+    ],
+
+    love: [
+      "amour",
+      "love",
+      "mbëggeel"
+    ],
+
+    mbëggeel: [
+      "amour",
+      "love",
+      "mbëggeel"
+    ],
+
+
+    bonheur: [
+      "bonheur",
+      "happiness",
+      "bég"
+    ],
+
+    happiness: [
+      "bonheur",
+      "happiness",
+      "bég"
+    ],
+
+
+    courage: [
+      "courage",
+      "fit",
+      "doole"
+    ],
+
+
+    succès: [
+      "succès",
+      "success",
+      "réussite",
+      "jot"
+    ],
+
+    success: [
+      "succès",
+      "success",
+      "réussite",
+      "jot"
+    ],
+
+
+    motivation: [
+      "motivation",
+      "encouragement",
+      "doole",
+      "yaakaar"
+    ]
 
   };
 
 
   /*
-    API Quotable
-    L'API est utilisée quand elle est accessible.
-    Le site possède toujours un système de secours.
+  =====================================================
+  NORMALISER UN TEXTE
+  =====================================================
   */
 
-  async function getApiQuote() {
+  function normalize(text) {
 
-    const controller = new AbortController();
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
 
-    const timeout = setTimeout(() => {
-      controller.abort();
-    }, 5000);
+  }
 
-    try {
 
-      const response = await fetch(
-        "https://api.quotable.io/random",
-        {
-          signal: controller.signal
-        }
-      );
+  /*
+  =====================================================
+  OBTENIR LES MOTS ÉQUIVALENTS
+  =====================================================
+  */
 
-      if (!response.ok) {
-        throw new Error("API error");
+  function getSearchWords(term) {
+
+    const clean =
+      normalize(term);
+
+    for (const key in searchGroups) {
+
+      if (normalize(key) === clean) {
+
+        return searchGroups[key];
+
       }
 
-      const data = await response.json();
-
-      clearTimeout(timeout);
-
-      return {
-        text: data.content,
-        author: data.author
-      };
-
-    } catch (error) {
-
-      clearTimeout(timeout);
-
-      return null;
-    }
-  }
-
-
-  /*
-    Choisir une citation locale
-  */
-
-  function getRandomFallback(language = currentLanguage) {
-
-    const list = fallbackQuotes[language];
-
-    return list[
-      Math.floor(Math.random() * list.length)
-    ];
-  }
-
-
-  /*
-    Afficher une citation
-  */
-
-  function displayQuote(text, author) {
-
-    currentQuote = text;
-    currentAuthor = author;
-
-    quoteElement.textContent = `"${text}"`;
-    authorElement.textContent = `— ${author}`;
-  }
-
-
-  /*
-    Nouvelle citation
-  */
-
-  async function getNewQuote() {
-
-    statusElement.textContent = translations[currentLanguage].loading;
-    statusElement.classList.add("loading");
-
-    let quote = null;
-
-    /*
-      L'API est utilisée surtout pour français/anglais.
-      Pour le wolof, on utilise les citations locales afin
-      d'éviter de présenter une traduction automatique
-      comme étant une vraie citation wolof.
-    */
-
-    if (currentLanguage !== "wo") {
-      quote = await getApiQuote();
     }
 
-    if (quote) {
+    return [term];
 
-      displayQuote(
-        quote.text,
-        quote.author
-      );
-
-      statusElement.textContent = "";
-
-    } else {
-
-      const fallback =
-        getRandomFallback(currentLanguage);
-
-      displayQuote(
-        fallback.text,
-        fallback.author
-      );
-
-      statusElement.textContent =
-        translations[currentLanguage].apiError;
-    }
-
-    statusElement.classList.remove("loading");
   }
 
 
   /*
-    Recherche locale
+  =====================================================
+  RECHERCHE LOCALE
+  =====================================================
   */
 
   function searchLocal(term) {
 
-    const list =
-      fallbackQuotes[currentLanguage];
+    const words =
+      getSearchWords(term);
+
+    const allQuotes = [
+      ...localQuotes.fr,
+      ...localQuotes.en,
+      ...localQuotes.wo
+    ];
 
     const results =
-      list.filter(item =>
-        item.text.toLowerCase().includes(term.toLowerCase()) ||
-        item.author.toLowerCase().includes(term.toLowerCase())
-      );
+      allQuotes.filter(item => {
+
+        const searchableText =
+          normalize(
+            item.text +
+            " " +
+            item.author +
+            " " +
+            item.tags.join(" ")
+          );
+
+        return words.some(word =>
+          searchableText.includes(
+            normalize(word)
+          )
+        );
+
+      });
 
     return results;
+
   }
 
 
   /*
-    Recherche via API
+  =====================================================
+  AFFICHER CITATION
+  =====================================================
+  */
+
+  function displayQuote(quote, author) {
+
+    currentQuote = quote;
+
+    currentAuthor = author;
+
+    quoteElement.textContent =
+      "“" + quote + "”";
+
+    authorElement.textContent =
+      "— " + author;
+
+  }
+
+
+  /*
+  =====================================================
+  API
+  =====================================================
+  */
+
+  async function getApiQuote() {
+
+    try {
+
+      const controller =
+        new AbortController();
+
+      const timer =
+        setTimeout(
+          () => controller.abort(),
+          6000
+        );
+
+      const response =
+        await fetch(
+          API_RANDOM,
+          {
+            signal: controller.signal
+          }
+        );
+
+      clearTimeout(timer);
+
+      if (!response.ok) {
+        throw new Error("API");
+      }
+
+      const data =
+        await response.json();
+
+      return {
+
+        text: data.quote,
+
+        author: data.author
+
+      };
+
+    } catch (error) {
+
+      return null;
+
+    }
+
+  }
+
+
+  /*
+  =====================================================
+  NOUVELLE CITATION
+  =====================================================
+  */
+
+  async function newQuote() {
+
+    statusElement.textContent =
+      "Chargement...";
+
+    /*
+      Wolof :
+      on utilise les données locales
+      pour conserver le texte wolof.
+    */
+
+    if (currentLanguage === "wo") {
+
+      const list =
+        localQuotes.wo;
+
+      const random =
+        list[
+          Math.floor(
+            Math.random() * list.length
+          )
+        ];
+
+      displayQuote(
+        random.text,
+        random.author
+      );
+
+      statusElement.textContent = "";
+
+      return;
+    }
+
+
+    /*
+      API pour anglais/français.
+
+      L'API fournit principalement des
+      citations anglaises.
+    */
+
+    const apiQuote =
+      await getApiQuote();
+
+
+    if (apiQuote) {
+
+      displayQuote(
+        apiQuote.text,
+        apiQuote.author
+      );
+
+      statusElement.textContent =
+        "🌐 Citation chargée depuis l'API.";
+
+      return;
+
+    }
+
+
+    /*
+      Secours local
+    */
+
+    const list =
+      localQuotes[currentLanguage];
+
+    const random =
+      list[
+        Math.floor(
+          Math.random() * list.length
+        )
+      ];
+
+    displayQuote(
+      random.text,
+      random.author
+    );
+
+    statusElement.textContent =
+      "📡 API indisponible : citation locale utilisée.";
+
+  }
+
+
+  /*
+  =====================================================
+  RECHERCHE
+  =====================================================
   */
 
   async function searchQuote() {
@@ -840,213 +1244,343 @@
     const term =
       searchInput.value.trim();
 
+
     if (!term) {
-      getNewQuote();
+
+      newQuote();
+
       return;
+
     }
+
 
     statusElement.textContent =
-      translations[currentLanguage].loading;
+      "🔎 Recherche...";
 
-    statusElement.classList.add("loading");
 
     /*
-      Pour le wolof, recherche dans notre
-      base locale.
+      ÉTAPE 1 :
+      recherche multilingue locale.
     */
 
-    if (currentLanguage === "wo") {
+    const localResults =
+      searchLocal(term);
 
-      const results =
-        searchLocal(term);
 
-      if (results.length > 0) {
+    if (localResults.length > 0) {
 
-        const quote =
-          results[
-            Math.floor(
-              Math.random() * results.length
-            )
-          ];
+      /*
+        On privilégie la langue choisie
+        lorsque possible.
+      */
 
-        displayQuote(
-          quote.text,
-          quote.author
-        );
+      const preferred =
+        localResults.filter(item => {
 
-        statusElement.textContent = "";
+          return localQuotes[
+            currentLanguage
+          ].includes(item);
 
-      } else {
+        });
 
-        statusElement.textContent =
-          translations[currentLanguage].noResult;
-      }
 
-      statusElement.classList.remove("loading");
+      const list =
+        preferred.length > 0
+          ? preferred
+          : localResults;
+
+
+      const result =
+        list[
+          Math.floor(
+            Math.random() * list.length
+          )
+        ];
+
+
+      displayQuote(
+        result.text,
+        result.author
+      );
+
+
+      statusElement.textContent =
+        "✅ Résultat trouvé.";
+
       return;
+
     }
 
-    try {
 
-      const controller =
-        new AbortController();
+    /*
+      ÉTAPE 2 :
+      API si recherche anglaise.
+    */
 
-      const timeout =
-        setTimeout(
-          () => controller.abort(),
-          5000
-        );
+    if (currentLanguage !== "wo") {
 
-      const response =
-        await fetch(
-          "https://api.quotable.io/search/quotes?query=" +
-          encodeURIComponent(term),
-          {
-            signal: controller.signal
-          }
-        );
+      try {
 
-      clearTimeout(timeout);
-
-      if (!response.ok) {
-        throw new Error("Search error");
-      }
-
-      const data =
-        await response.json();
-
-      if (data.results && data.results.length > 0) {
-
-        const result =
-          data.results[0];
-
-        displayQuote(
-          result.content,
-          result.author
-        );
-
-        statusElement.textContent = "";
-
-      } else {
-
-        const local =
-          searchLocal(term);
-
-        if (local.length > 0) {
-
-          const result =
-            local[0];
-
-          displayQuote(
-            result.text,
-            result.author
+        const response =
+          await fetch(
+            "https://dummyjson.com/quotes?limit=100"
           );
 
-          statusElement.textContent = "";
+        if (response.ok) {
 
-        } else {
+          const data =
+            await response.json();
 
-          statusElement.textContent =
-            translations[currentLanguage].noResult;
+          const words =
+            getSearchWords(term);
+
+          const results =
+            data.quotes.filter(item => {
+
+              const text =
+                normalize(
+                  item.quote +
+                  " " +
+                  item.author
+                );
+
+              return words.some(word =>
+                text.includes(
+                  normalize(word)
+                )
+              );
+
+            });
+
+
+          if (results.length > 0) {
+
+            const result =
+              results[
+                Math.floor(
+                  Math.random() *
+                  results.length
+                )
+              ];
+
+
+            displayQuote(
+              result.quote,
+              result.author
+            );
+
+
+            statusElement.textContent =
+              "🌐 Résultat trouvé dans l'API.";
+
+            return;
+
+          }
+
         }
-      }
 
-    } catch (error) {
+      } catch (error) {
 
-      const local =
-        searchLocal(term);
-
-      if (local.length > 0) {
-
-        const result = local[0];
-
-        displayQuote(
-          result.text,
-          result.author
+        console.log(
+          "API indisponible."
         );
 
-        statusElement.textContent =
-          translations[currentLanguage].apiError;
-
-      } else {
-
-        statusElement.textContent =
-          translations[currentLanguage].noResult;
       }
+
     }
 
-    statusElement.classList.remove("loading");
+
+    /*
+      ÉTAPE 3 :
+      aucun résultat.
+    */
+
+    const messages = {
+
+      fr:
+        "❌ Aucun résultat. Essaie « vie », « life », « amour » ou « love ».",
+
+      en:
+        "❌ No result. Try “life”, “vie”, “love” or “amour”.",
+
+      wo:
+        "❌ Amul benn résultat. Jéemaat ak beneen baat."
+
+    };
+
+
+    statusElement.textContent =
+      messages[currentLanguage];
+
   }
 
 
   /*
-    Lecture vocale
+  =====================================================
+  CHANGER DE LANGUE
+  =====================================================
+  */
+
+  function changeLanguage(language) {
+
+    currentLanguage =
+      language;
+
+    languageSelect.value =
+      language;
+
+
+    document
+      .querySelectorAll(".language-button")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.language === language
+        );
+
+      });
+
+
+    /*
+      Message vocal wolof.
+    */
+
+    wolofWarning.style.display =
+      language === "wo"
+        ? "block"
+        : "none";
+
+
+    /*
+      Placeholder
+    */
+
+    const placeholders = {
+
+      fr:
+        "Exemple : vie, amour, motivation...",
+
+      en:
+        "Example: life, love, motivation...",
+
+      wo:
+        "Misaal : yaakaar, muñ, doole..."
+
+    };
+
+
+    searchInput.placeholder =
+      placeholders[language];
+
+
+    newQuote();
+
+  }
+
+
+  /*
+  =====================================================
+  LECTURE VOCALE
+  =====================================================
   */
 
   function speakQuote() {
 
-    if (!("speechSynthesis" in window)) {
+    /*
+      IMPORTANT :
+      Pas de fausse voix wolof.
+    */
 
-      alert(
-        "La lecture vocale n'est pas disponible sur cet appareil."
-      );
+    if (currentLanguage === "wo") {
+
+      statusElement.textContent =
+        "🔊 La vraie voix wolof nécessite un service vocal compatible avec le wolof.";
 
       return;
+
     }
+
+
+    if (!("speechSynthesis" in window)) {
+
+      statusElement.textContent =
+        "❌ La lecture vocale n'est pas disponible sur cet appareil.";
+
+      return;
+
+    }
+
 
     window.speechSynthesis.cancel();
 
-    const text =
-      currentQuote +
-      ". " +
-      currentAuthor;
 
     const speech =
-      new SpeechSynthesisUtterance(text);
+      new SpeechSynthesisUtterance(
+        currentQuote +
+        ". " +
+        currentAuthor
+      );
 
-    /*
-      Langues demandées.
-      Le navigateur utilisera une voix disponible.
-    */
 
     if (currentLanguage === "fr") {
-      speech.lang = "fr-FR";
+
+      speech.lang =
+        "fr-FR";
+
+    } else {
+
+      speech.lang =
+        "en-US";
+
     }
 
-    if (currentLanguage === "en") {
-      speech.lang = "en-US";
-    }
 
-    if (currentLanguage === "wo") {
-      /*
-        Il n'existe pas forcément de voix wolof
-        sur tous les appareils.
-        On demande au navigateur une voix proche.
-      */
-      speech.lang = "wo-SN";
-    }
+    speech.rate =
+      0.9;
 
-    speech.rate = 0.9;
-    speech.pitch = 1;
+    speech.pitch =
+      1;
 
-    window.speechSynthesis.speak(speech);
+
+    window.speechSynthesis.speak(
+      speech
+    );
+
+
+    statusElement.textContent =
+      "🔊 Lecture en cours...";
+
   }
 
 
   /*
-    Arrêter la lecture
+  =====================================================
+  ARRÊTER VOIX
+  =====================================================
   */
 
   function stopVoice() {
 
-    if ("speechSynthesis" in window) {
+    if (
+      "speechSynthesis"
+      in window
+    ) {
+
       window.speechSynthesis.cancel();
+
+      statusElement.textContent =
+        "";
+
     }
+
   }
 
 
   /*
-    Copier
+  =====================================================
+  COPIER
+  =====================================================
   */
 
   async function copyQuote() {
@@ -1054,26 +1588,31 @@
     const text =
       `"${currentQuote}" — ${currentAuthor}`;
 
+
     try {
 
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(
+        text
+      );
 
       statusElement.textContent =
-        translations[currentLanguage].copied;
+        "✅ Citation copiée !";
 
-      setTimeout(() => {
-        statusElement.textContent = "";
-      }, 2000);
 
     } catch {
 
-      alert("Impossible de copier la citation.");
+      statusElement.textContent =
+        "❌ Impossible de copier.";
+
     }
+
   }
 
 
   /*
-    Partager
+  =====================================================
+  PARTAGER
+  =====================================================
   */
 
   async function shareQuote() {
@@ -1081,164 +1620,139 @@
     const text =
       `"${currentQuote}" — ${currentAuthor}`;
 
+
     if (navigator.share) {
 
       try {
 
         await navigator.share({
-          title: "CitationHub",
-          text: text
+
+          title:
+            "CitationHub",
+
+          text:
+            text
+
         });
 
       } catch {
-        // L'utilisateur a fermé le partage.
+
+        // Partage annulé.
+
       }
 
     } else {
 
       await copyQuote();
 
-      alert(
-        "Le partage n'est pas disponible. La citation a été copiée."
-      );
+      statusElement.textContent =
+        "📋 Citation copiée pour être partagée.";
+
     }
+
   }
 
 
   /*
-    Changer de langue
+  =====================================================
+  MODE SOMBRE
+  =====================================================
   */
 
-  function changeLanguage() {
+  document
+    .getElementById("themeButton")
+    .addEventListener(
+      "click",
+      () => {
 
-    currentLanguage =
-      languageSelect.value;
+        document.body.classList.toggle(
+          "dark"
+        );
 
-    const t =
-      translations[currentLanguage];
 
-    document.getElementById("heroText")
-      .textContent = t.hero;
+        const dark =
+          document.body.classList.contains(
+            "dark"
+          );
 
-    searchInput.placeholder =
-      t.placeholder;
 
-    document.getElementById("searchBtn")
-      .textContent = t.search;
+        document
+          .getElementById("themeButton")
+          .textContent =
+            dark ? "☀️" : "🌙";
 
-    document.getElementById("voiceBtn")
-      .textContent = t.listen;
-
-    document.getElementById("stopVoiceBtn")
-      .textContent = t.stop;
-
-    document.getElementById("copyBtn")
-      .textContent = t.copy;
-
-    document.getElementById("shareBtn")
-      .textContent = t.share;
-
-    document.getElementById("newQuoteBtn")
-      .textContent = t.newQuote;
-
-    stopVoice();
-
-    getNewQuote();
-  }
+      }
+    );
 
 
   /*
-    Mode sombre
+  =====================================================
+  BOUTONS LANGUES
+  =====================================================
   */
 
-  const themeBtn =
-    document.getElementById("themeBtn");
+  document
+    .querySelectorAll(".language-button")
+    .forEach(button => {
 
-  themeBtn.addEventListener(
-    "click",
+      button.addEventListener(
+        "click",
+        () => {
+
+          changeLanguage(
+            button.dataset.language
+          );
+
+        }
+      );
+
+    });
+
+
+  languageSelect.addEventListener(
+    "change",
     () => {
 
-      document.body.classList.toggle("dark");
+      changeLanguage(
+        languageSelect.value
+      );
 
-      const isDark =
-        document.body.classList.contains("dark");
-
-      themeBtn.textContent =
-        isDark ? "☀️" : "🌙";
     }
   );
 
 
   /*
-    Événements
+  =====================================================
+  RECHERCHE
+  =====================================================
   */
 
   document
-    .getElementById("newQuoteBtn")
-    .addEventListener(
-      "click",
-      getNewQuote
-    );
-
-  document
-    .getElementById("searchBtn")
+    .getElementById("searchButton")
     .addEventListener(
       "click",
       searchQuote
     );
 
-  document
-    .getElementById("voiceBtn")
-    .addEventListener(
-      "click",
-      speakQuote
-    );
-
-  document
-    .getElementById("stopVoiceBtn")
-    .addEventListener(
-      "click",
-      stopVoice
-    );
-
-  document
-    .getElementById("copyBtn")
-    .addEventListener(
-      "click",
-      copyQuote
-    );
-
-  document
-    .getElementById("shareBtn")
-    .addEventListener(
-      "click",
-      shareQuote
-    );
-
-  languageSelect
-    .addEventListener(
-      "change",
-      changeLanguage
-    );
-
-
-  /*
-    Recherche avec Entrée
-  */
 
   searchInput.addEventListener(
     "keydown",
     event => {
 
       if (event.key === "Enter") {
+
         searchQuote();
+
       }
+
     }
   );
 
 
   /*
-    Boutons catégories
+  =====================================================
+  CATEGORIES
+  =====================================================
   */
 
   document
@@ -1253,6 +1767,7 @@
             button.dataset.search;
 
           searchQuote();
+
         }
       );
 
@@ -1260,10 +1775,58 @@
 
 
   /*
-    Charger une première citation
+  =====================================================
+  AUTRES BOUTONS
+  =====================================================
   */
 
-  getNewQuote();
+  document
+    .getElementById("newButton")
+    .addEventListener(
+      "click",
+      newQuote
+    );
+
+
+  document
+    .getElementById("listenButton")
+    .addEventListener(
+      "click",
+      speakQuote
+    );
+
+
+  document
+    .getElementById("stopButton")
+    .addEventListener(
+      "click",
+      stopVoice
+    );
+
+
+  document
+    .getElementById("copyButton")
+    .addEventListener(
+      "click",
+      copyQuote
+    );
+
+
+  document
+    .getElementById("shareButton")
+    .addEventListener(
+      "click",
+      shareQuote
+    );
+
+
+  /*
+  =====================================================
+  DÉMARRAGE
+  =====================================================
+  */
+
+  changeLanguage("fr");
 
 </script>
 
